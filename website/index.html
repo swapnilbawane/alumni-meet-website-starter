@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Meetup — Event Website Template</title>
+  <meta name="theme-color" content="#F3EACB">
+  <meta name="description"
+    content="An alumni meetup website template for event information and approved community profiles.">
+  <meta property="og:title" content="Alumni Meetup — Community Event">
+  <meta property="og:description"
+    content="Reconnect, reminisce, and network. See event information and approved community profiles.">  <!-- top of the page -->
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F3EACB;
+      --bg-card: #FBF7EA;
+      --ink: #241B12;
+      --ink-soft: #5B4E3A;
+      --maroon: #7E1F2C;
+      --maroon-dark: #57141E;
+      --gold: #B98D3E;
+      --line: rgba(36, 27, 18, 0.14);
+      --serif: 'Fraunces', serif;
+      --sans: 'Inter', -apple-system, sans-serif; 
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--maroon);
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      border: none;
+      margin: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(243, 234, 203, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--maroon-dark);
+      letter-spacing: 0.2px;
+    }
+
+    .brand img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+
+    .brand span {
+      color: var(--ink-soft);
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+
+    .navlinks a:hover {
+      color: var(--maroon);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      margin: -6px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      margin: 5px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .mobile-menu a {
+      padding: 14px 24px;
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--maroon);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    @media (max-width:640px) {
+      .navlinks {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 56px 0 40px;
+    }
+
+    .hero-top {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--maroon);
+      margin-bottom: 10px;
+    }
+
+    h1.headline {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(34px, 5.6vw, 54px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      color: var(--ink);
+    }
+
+    h1.headline em {
+      font-style: italic;
+      color: var(--maroon);
+      font-weight: 500;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-photo {
+      margin-top: 8px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px -22px rgba(36, 27, 18, 0.35);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-caption {
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-top: 10px;
+    }
+
+    /* TICKET / DETAILS STRIP */
+    .ticket {
+      margin: 40px 0;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ticket-item {
+      padding: 22px 20px;
+      border-right: 1px solid var(--line);
+    }
+
+    .ticket-item:last-child {
+      border-right: none;
+    }
+
+    .ticket-label {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .ticket-value {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    @media (max-width:640px) {
+      .ticket {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ticket-item {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .ticket-item:nth-child(2n) {
+        border-right: none;
+      }
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--maroon);
+      color: #fff;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--maroon-dark);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--maroon);
+      border: 1px solid var(--maroon);
+    }
+
+    .btn-ghost:hover {
+      background: var(--maroon);
+      color: #fff;
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--maroon);
+      outline-offset: 2px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 56px 0;
+    }
+
+    section.alt {
+      background: var(--bg-card);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+    }
+
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 28px;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 560px;
+      font-size: 15px;
+    }
+
+    /* THEME BAND — full statement */
+    .theme-band {
+      background: var(--maroon);
+      color: #F5EED9;
+      padding: 48px 0;
+      margin-top: -56px;
+      margin-bottom: 44px;
+    }
+
+    .theme-band-label {
+      font-size: 13.5px;
+      color: #D9AE7E;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 12px;
+    }
+
+    .theme-band-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(26px, 5vw, 40px);
+      line-height: 1.15;
+      max-width: 620px;
+      color: #F8F1DE;
+    }
+
+    /* Section headers — quiet, gold rule (theme band is the one bold moment) */
+    .band-head {
+      padding: 0;
+      margin-bottom: 26px;
+    }
+
+    .band-head h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 27px;
+      margin: 0;
+      padding-bottom: 12px;
+      color: var(--ink);
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+
+    /* ABOUT */
+    .about-body p {
+      font-size: 15.5px;
+      color: #43392A;
+      max-width: 640px;
+    }
+
+    .expect-head {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .expect-head h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 19px;
+      margin: 0 0 22px;
+      color: var(--ink);
+    }
+
+    .lookforward {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 32px;
+      margin-top: 28px;
+    }
+
+    @media (max-width:640px) {
+      .lookforward {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lf-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .lf-mark {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--maroon);
+      font-size: 20px;
+      line-height: 1;
+      padding-top: 3px;
+    }
+
+    .lf-item h3 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 15.5px;
+      margin: 0 0 4px;
+    }
+
+    .lf-item p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+    }
+
+    /* UPDATES */
+    .updates-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .update-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (max-width:560px) {
+      .update-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    .update-date {
+      font-size: 13px;
+      color: var(--maroon);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+
+    .update-body h4 {
+      margin: 0 0 4px;
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .update-body p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+    }
+
+    .post-update {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .post-update summary {
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--ink-soft);
+      list-style: none;
+    }
+
+    .post-update summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .post-update summary::before {
+      content: "+ ";
+      color: var(--maroon);
+      font-weight: 600;
+    }
+
+    .post-update[open] summary::before {
+      content: "− ";
+    }
+
+    .post-update .mini-form {
+      margin-top: 16px;
+    }
+
+    /* WHO'S COMING */
+    .filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filters select {
+      font-family: var(--sans);
+      font-size: 14px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--bg-card);
+      color: var(--ink);
+    }
+
+    .count-note {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+    }
+
+    .grid-people {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width:680px) {
+      .grid-people {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .person-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 20px;
+    }
+
+    .person-top {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .avatar.has-photo {
+      background: var(--line);
+    }
+
+    .invitee-top {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .invitee-photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 19px;
+      color: #fff;
+    }
+
+    .invitee-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .person-name {
+      font-weight: 600;
+      font-size: 15.5px;
+    }
+
+    .person-meta {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .person-field {
+      font-size: 13.5px;
+      margin-top: 8px;
+      color: var(--ink-soft);
+    }
+
+    .person-field strong {
+      color: var(--ink);
+      font-weight: 600;
+      display: block;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .person-linkedin {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--maroon);
+      font-weight: 500;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      border: 1px dashed var(--line);
+      border-radius: 7px;
+    }
+
+    /* Special invitees — visually distinct from alumni cards */
+    #guestsList {
+      grid-template-columns: 1fr;
+    }
+
+    .invitee-card {
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      padding: 18px 22px;
+    }
+
+    .invitee-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .invitee-role {
+      font-size: 13.5px;
+      color: var(--maroon);
+      margin-top: 3px;
+    }
+
+    /* Student volunteers */
+    #studentsSection {
+      display: none;
+    }
+
+    .student-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width:680px) {
+      .student-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:420px) {
+      .student-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .student-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .student-photo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      overflow: hidden;
+      background: var(--maroon);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .student-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .student-name {
+      font-weight: 600;
+      font-size: 14.5px;
+    }
+
+    .student-role {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .student-card .person-linkedin {
+      margin-top: 8px;
+      font-size: 12.5px;
+    }
+
+    /* RSVP deadline strip */
+    .deadline-strip {
+      background: var(--maroon);
+      color: #F8F1DE;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+
+    .deadline-strip strong {
+      color: #F0C67C;
+      font-weight: 600;
+    }
+
+    .deadline-strip a {
+      color: #F8F1DE;
+      font-weight: 600;
+    }
+
+    .confirmed-count {
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--maroon);
+      margin-top: 18px;
+    }
+
+    /* Batch grouping in directory */
+    .batch-group-label {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin: 26px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .batch-group-label:first-child {
+      margin-top: 0;
+    }
+
+    /* FORM */
+    form.rsvp {
+      max-width: 640px;
+    }
+
+    .form-row {
+      margin-bottom: 18px;
+    }
+
+    .form-row.two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width:560px) {
+      .form-row.two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .hint {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      font-weight: 400;
+      margin-top: 3px;
+    }
+
+    input[type=text],
+    input[type=url],
+    textarea,
+    select.form-select {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--bg-card);
+      color: var(--ink);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .required-mark {
+      color: var(--maroon);
+    }
+
+    .form-status {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .form-status.ok {
+      color: #3a6b3e;
+    }
+
+    .form-status.err {
+      color: var(--maroon);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 44px 0 60px;
+    }
+
+    footer {
+      padding-top: 0;
+    }
+
+    .footer-close {
+      background: var(--maroon);
+      color: #F8F1DE;
+      padding: 40px 0;
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .footer-close p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(20px, 3.4vw, 27px);
+      line-height: 1.3;
+      margin: 0 auto;
+      max-width: 600px;
+      color: #F8F1DE;
+    }
+
+    .footer-close .sign a {
+      color: #F8F1DE;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(248, 241, 222, 0.45);
+    }
+
+    .footer-close .sign a:hover {
+      text-decoration-color: #F8F1DE;
+    }
+
+    .footer-close .sign {
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 13.5px;
+      color: #E3BE8C;
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-brand img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-contact {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .footer-contact a {
+      color: var(--ink-soft);
+    }
+
+    #admin {
+      padding: 0 0 8px;
+    }
+
+    #admin .wrap {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    #admin summary {
+      font-size: 13px;
+      color: var(--ink-soft);
+      opacity: 0.7;
+    }
+
+    .pending-item {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+
+    .pending-item .person-meta {
+      margin-bottom: 6px;
+    }
+
+    .pending-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pending-actions button {
+      font-family: var(--sans);
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .pending-actions .approve {
+      background: var(--maroon);
+      color: #fff;
+      border-color: var(--maroon);
+    }
+
+    .pending-actions .reject {
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand"><span class="brand-name">Alumni Meetup</span></div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#updates">Updates</a>
+        <a href="#people">Who's Coming</a>
+        <a href="https://YOUR-RSVP-LINK" target="_blank" rel="noopener">RSVP</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#updates">Updates</a>
+      <a href="#people">Who's Coming</a>
+      <a href="https://YOUR-RSVP-LINK" target="_blank" rel="noopener">RSVP</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="wrap hero-top">
+      <div class="kicker">Reconnect, reminisce, and network</div>
+      <h1 class="headline">An evening with the <em>alumni community</em></h1> <!-- Header in site -->
+      <p class="hero-sub">A reminiscising alumni meet followed by dinner — an opportunity to catch-up with pals, 
+        rekindle our college days, meet your faculty and build lifelong connections worth keeping.</p>
+    </div>
+    <div class="wrap">
+      <div class="hero-photo" aria-label="Add your event photograph here"></div>
+      
+
+      <div class="ticket">
+        <div class="ticket-item">
+          <div class="ticket-label">Date</div>
+          <div class="ticket-value">YOUR-EVENT-DATE</div>
+        </div>
+        <div class="ticket-item">
+          <div class="ticket-label">Time</div>
+          <div class="ticket-value">4 PM - 9 PM</div>
+        </div>
+        <div class="ticket-item">
+          <div class="ticket-label">City</div>
+          <div class="ticket-value">YOUR-CITY</div>
+        </div>
+        <div class="ticket-item">
+          <div class="ticket-label">RSVP by</div>
+          <div class="ticket-value">YOUR-RSVP-DEADLINE</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="https://YOUR-RSVP-LINK" class="btn" target="_blank" rel="noopener">RSVP on the
+          portal</a>
+      </div>
+      <div class="confirmed-count" id="heroCount"></div>
+    </div>
+  </div>
+
+  <div class="deadline-strip">
+    RSVP by <strong>YOUR-RSVP-DEADLINE</strong> so organisers can plan ahead. — <a href="https://YOUR-RSVP-LINK"
+      target="_blank" rel="noopener">register here</a>
+  </div>
+
+  <hr class="rule">
+
+  <section id="about">
+    <div class="theme-band">
+      <div class="wrap">
+        <div class="theme-band-label">The theme</div>
+        <div class="theme-band-text">Reconnect, Reminisce, and Network</div>
+      </div>
+    </div>
+    <div class="wrap">
+      <!--  <div class="section-head about-body">
+        <p>It's time to meet inspiring fellow alumni, expand your network, exchange ideas, discover new opportunities,
+          and reconnect with the community that brought us together — whether you're meeting old friends after years,
+          putting faces to familiar names, or making your very first alumni connection.</p>
+      </div>-->
+      <div class="expect-head">
+        <h3>What to expect</h3>
+      </div>
+      <div class="lookforward">
+        <div class="lf-item">
+          <div class="lf-mark">&#10022;</div>
+          <div>
+            <h3>Meet &amp; greet</h3>
+            <p>Connect with alumni from different batches and backgrounds.</p>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-mark">&#10022;</div>
+          <div>
+            <h3>Meaningful conversations</h3>
+            <p>Share experiences, stories, and ideas.</p>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-mark">&#10022;</div>
+          <div>
+            <h3>Expand your network</h3>
+            <p>Build personal and professional connections.</p>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-mark">&#10022;</div>
+          <div>
+            <h3>Recognition &amp; Felicitation</h3>
+            <p> Honoring star alumni across batches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="know">
+    <div class="wrap">
+      <div class="band-head">
+        <h2>Good to know</h2>
+      </div>
+      <div class="updates-list">
+        <div class="update-row">
+          <div class="update-date">Venue</div>
+          <div class="update-body">
+            <p>YOUR-VENUE-ADDRESS. <a href="YOUR-MAP-LINK" target="_blank" rel="noopener">View on map &#8594;</a></p>
+          </div>
+        </div>
+        <div class="update-row">
+          <div class="update-date">Getting there</div>
+          <div class="update-body">
+            <p>Add travel and accessibility information for your venue.</p>
+          </div>
+        </div>
+        <div class="update-row">
+          <div class="update-date">Dinner</div>
+          <div class="update-body">
+            <p>Add event-specific information and RSVP instructions here.</p>
+          </div>
+        </div>
+        <div class="update-row">
+          <div class="update-date">Questions</div>
+          <div class="update-body">
+            <p>Write to <a href="mailto:YOUR-CONTACT-EMAIL">YOUR-CONTACT-EMAIL</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="updates">
+    <div class="wrap">
+      <div class="band-head">
+        <h2>Updates</h2>
+      </div>
+      <div class="section-head">
+        <p>Venue, timing, and any other details will be posted here as they're confirmed.</p>
+      </div>
+      <div id="updatesList" class="updates-list">
+        <div class="empty-state">Loading updates…</div>
+      </div>
+
+      <details class="post-update">
+        <summary>Post an update</summary>
+        <div class="mini-form">
+          <div class="form-row">
+            <label for="upd-title">Title</label>
+            <input type="text" id="upd-title" placeholder="e.g. Venue confirmed">
+          </div>
+          <div class="form-row">
+            <label for="upd-body">Details</label>
+            <textarea id="upd-body" placeholder="Share the update…"></textarea>
+          </div>
+          <button class="btn btn-ghost" id="postUpdateBtn" type="button">Post update</button>
+          <div class="form-status" id="updateStatus"></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="people">
+    <div class="wrap">
+      <div class="band-head">
+        <h2>Who's coming</h2>
+      </div>
+      <div class="section-head">
+        <p>Everyone who's coming, with what they're up to and what they're happy to talk about. Add yourself below.</p>
+      </div>
+      <div class="filters">
+        <select id="filterBranch">
+          <option value="">All branches</option>
+        </select>
+        <select id="filterYear">
+          <option value="">All years</option>
+        </select>
+      </div>
+      <div class="count-note" id="countNote"></div>
+      <div id="peopleGrid">
+        <div class="empty-state">Loading attendees…</div>
+      </div>
+
+      <div class="expect-head" id="guestsHead" style="display:none;">
+        <h3>Special invitees</h3>
+      </div>
+      <div id="guestsList" class="grid-people"></div>
+    </div>
+  </section>
+
+  
+
+
+  <section class="alt" id="studentsSection">
+    <div class="wrap">
+      <div class="band-head">
+        <h2>Supported by</h2>
+      </div>
+      <div class="section-head">
+        <p>This meet is put together with help from our student team. Thank you.</p>
+      </div>
+      <div id="studentsList" class="student-grid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-close">
+      <div class="wrap">
+        <p>Come for the memories, stay for the conversations, and leave with new connections and new possibilities.</p>
+        <div class="sign">
+          <a href="mailto:YOUR-ALUMNI-LEAD-EMAIL">YOUR-ORGANISER-NAME</a><br>
+          YOUR-ORGANISATION-NAME
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="brand-name">YOUR-ORGANISATION-NAME</span></div>
+        <div class="footer-contact">
+          YOUR-ORGANISATION-NAME<br>
+          YOUR-LOCATION<br>
+          <a href="mailto:YOUR-ALUMNI-CONTACT-EMAIL">YOUR-ALUMNI-CONTACT-EMAIL</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // ---- CONFIG -------------------------------------------------------------
+      // Paste the Apps Script web app /exec URL here after deploying Code.gs.
+      var API_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+      var CACHE_KEY = 'alumni_meet_public_v1';
+      var CACHE_TTL_MS = 5 * 60 * 1000;
+      // -------------------------------------------------------------------------
+
+      var attendees = [];
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function initials(name) {
+        if (!name) return '?';
+        var parts = String(name).trim().split(/\s+/);
+        var i = parts[0] ? parts[0][0] : '';
+        var j = parts.length > 1 ? parts[parts.length - 1][0] : '';
+        return (i + j).toUpperCase();
+      }
+
+      function fmtDate(iso) {
+        try {
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return '';
+          return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+        } catch (e) { return ''; }
+      }
+
+      function readCache() {
+        try {
+          var raw = sessionStorage.getItem(CACHE_KEY);
+          if (!raw) return null;
+          var parsed = JSON.parse(raw);
+          if (!parsed || !parsed.t) return null;
+          if (Date.now() - parsed.t > CACHE_TTL_MS) return null;
+          return parsed.d;
+        } catch (e) { return null; }
+      }
+
+      function writeCache(data) {
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: data }));
+        } catch (e) { /* private mode, quota — not important */ }
+      }
+
+      function configured() {
+        return API_URL.indexOf('PASTE_YOUR') === -1;
+      }
+
+      // ---------- FETCH --------------------------------------------------------
+      async function fetchAll() {
+        var res = await fetch(API_URL + '?action=all', { method: 'GET' });
+        if (!res.ok) throw new Error('Network response was not ok');
+        var data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'Unknown error');
+        return data;
+      }
+
+      async function load() {
+        var cached = readCache();
+        if (cached) {
+          renderAll(cached);
+        }
+        if (!configured()) {
+          if (!cached) renderNotConfigured();
+          return;
+        }
+        try {
+          var data = await fetchAll();
+          writeCache(data);
+          renderAll(data);
+        } catch (e) {
+          if (!cached) renderError();
+        }
+      }
+
+      function renderNotConfigured() {
+        document.getElementById('updatesList').innerHTML =
+          '<div class="empty-state">Updates will appear here once the site is connected to its data source.</div>';
+        document.getElementById('peopleGrid').innerHTML =
+          '<div class="empty-state">Profiles will appear here once the site is connected to its data source.</div>';
+      }
+
+      function renderError() {
+        document.getElementById('updatesList').innerHTML =
+          '<div class="empty-state">Couldn\'t load updates just now. Refresh the page to try again.</div>';
+        document.getElementById('peopleGrid').innerHTML =
+          '<div class="empty-state">Couldn\'t load profiles just now. Refresh the page to try again.</div>';
+      }
+
+      function renderAll(data) {
+        renderUpdates(data.updates || []);
+        attendees = data.profiles || [];
+        populateFilters();
+        renderPeople();
+        renderGuests(data.guests || []);
+        renderStudents(data.students || []);
+      }
+
+      // ---------- UPDATES ------------------------------------------------------
+      function renderUpdates(updates) {
+        var list = document.getElementById('updatesList');
+        if (!updates.length) {
+          list.innerHTML = '<div class="empty-state">No updates yet. Venue and other details will be posted here.</div>';
+          return;
+        }
+        var sorted = updates.slice().sort(function (a, b) {
+          return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+        list.innerHTML = sorted.map(function (u) {
+          return '<div class="update-row">'
+            + '<div class="update-date">' + escapeHtml(fmtDate(u.timestamp)) + '</div>'
+            + '<div class="update-body"><h4>' + escapeHtml(u.title) + '</h4><p>' + escapeHtml(u.body) + '</p></div>'
+            + '</div>';
+        }).join('');
+      }
+
+      // ---------- GUESTS -------------------------------------------------------
+      function renderGuests(guests) {
+        var head = document.getElementById('guestsHead');
+        var list = document.getElementById('guestsList');
+        if (!guests.length) {
+          head.style.display = 'none';
+          list.innerHTML = '';
+          return;
+        }
+        head.style.display = 'block';
+        list.innerHTML = guests.map(function (g) {
+          var pic = g.photo
+            ? '<div class="invitee-photo"><img src="' + escapeHtml(g.photo)
+            + '" alt="" loading="lazy" onerror="this.parentNode.textContent=\''
+            + escapeHtml(initials(g.name)) + '\';"></div>'
+            : '<div class="invitee-photo">' + escapeHtml(initials(g.name)) + '</div>';
+          return '<div class="invitee-card"><div class="invitee-top">'
+            + pic
+            + '<div><div class="invitee-name">' + escapeHtml(g.name) + '</div>'
+            + '<div class="invitee-role">' + escapeHtml(g.note || '') + '</div></div>'
+            + '</div></div>';
+        }).join('');
+      }
+
+      // ---------- STUDENT TEAM -------------------------------------------------
+      function renderStudents(students) {
+        var section = document.getElementById('studentsSection');
+        var list = document.getElementById('studentsList');
+        if (!students.length) {
+          section.style.display = 'none';
+          list.innerHTML = '';
+          return;
+        }
+        section.style.display = 'block';
+        list.innerHTML = students.map(function (st) {
+          var pic = st.photo
+            ? '<div class="student-photo"><img src="' + escapeHtml(st.photo)
+            + '" alt="" loading="lazy" onerror="this.parentNode.textContent=\''
+            + escapeHtml(initials(st.name)) + '\';"></div>'
+            : '<div class="student-photo">' + escapeHtml(initials(st.name)) + '</div>';
+          var li = st.linkedin
+            ? '<a class="person-linkedin" href="' + escapeHtml(st.linkedin) + '" target="_blank" rel="noopener">LinkedIn &#8594;</a>'
+            : '';
+          return '<div class="student-card">'
+            + pic
+            + '<div class="student-name">' + escapeHtml(st.name) + '</div>'
+            + (st.role ? '<div class="student-role">' + escapeHtml(st.role) + '</div>' : '')
+            + li
+            + '</div>';
+        }).join('');
+      }
+
+      // ---------- ATTENDEES ----------------------------------------------------
+      function populateFilters() {
+        var branchSel = document.getElementById('filterBranch');
+        var yearSel = document.getElementById('filterYear');
+        var prevBranch = branchSel.value;
+        var prevYear = yearSel.value;
+
+        var branches = Array.from(new Set(attendees.map(function (a) { return a.branch; }).filter(Boolean))).sort();
+        var years = Array.from(new Set(attendees.map(function (a) { return a.year; }).filter(Boolean))).sort();
+
+        branchSel.innerHTML = '<option value="">All branches</option>' + branches.map(function (b) {
+          return '<option value="' + escapeHtml(b) + '">' + escapeHtml(b) + '</option>';
+        }).join('');
+        yearSel.innerHTML = '<option value="">All years</option>' + years.map(function (y) {
+          return '<option value="' + escapeHtml(y) + '">' + escapeHtml(y) + '</option>';
+        }).join('');
+
+        if (branches.indexOf(prevBranch) !== -1) branchSel.value = prevBranch;
+        if (years.indexOf(prevYear) !== -1) yearSel.value = prevYear;
+      }
+
+      function batchBucket(year) {
+        var y = parseInt(year, 10);
+        if (isNaN(y)) return 'Other';
+        var start = Math.floor(y / 5) * 5;
+        return start + '\u2013' + (start + 4);
+      }
+
+      function avatarHtml(p) {
+        if (p.photo) {
+          return '<div class="avatar has-photo"><img src="' + escapeHtml(p.photo)
+            + '" alt="" loading="lazy" onerror="this.parentNode.classList.remove(\'has-photo\');this.parentNode.textContent=\''
+            + escapeHtml(initials(p.name)) + '\';"></div>';
+        }
+        return '<div class="avatar">' + escapeHtml(initials(p.name)) + '</div>';
+      }
+
+      function personCardHtml(a) {
+        var linkedin = a.linkedin ? '<a class="person-linkedin" href="' + escapeHtml(a.linkedin) + '" target="_blank" rel="noopener">LinkedIn &#8594;</a>' : '';
+        var want = a.want ? '<div class="person-field"><strong>Hoping to</strong>' + escapeHtml(a.want) + '</div>' : '';
+        var experience = a.experience ? '<div class="person-field"><strong>Areas of experience</strong>' + escapeHtml(a.experience) + '</div>' : '';
+        var guide = a.guide ? '<div class="person-field"><strong>Happy to talk about</strong>' + escapeHtml(a.guide) + '</div>' : '';
+        var role = a.role ? escapeHtml(a.role) : '';
+        return '<div class="person-card">'
+          + '<div class="person-top">'
+          + avatarHtml(a)
+          + '<div><div class="person-name">' + escapeHtml(a.name) + '</div>'
+          + '<div class="person-meta">' + escapeHtml(a.branch) + (a.year ? ' \u00b7 Class of ' + escapeHtml(a.year) : '') + '</div></div>'
+          + '</div>'
+          + (role ? '<div class="person-field"><strong>Currently</strong>' + role + '</div>' : '')
+          + want + experience + guide + linkedin
+          + '</div>';
+      }
+
+      function renderGroupedCards(list) {
+        var buckets = {};
+        list.forEach(function (a) {
+          var key = batchBucket(a.year);
+          if (!buckets[key]) buckets[key] = [];
+          buckets[key].push(a);
+        });
+        var keys = Object.keys(buckets).sort(function (x, y) {
+          if (x === 'Other') return 1;
+          if (y === 'Other') return -1;
+          return parseInt(y, 10) - parseInt(x, 10);
+        });
+        return keys.map(function (k) {
+          return '<div class="batch-group-label">Class of ' + escapeHtml(k) + '</div>'
+            + '<div class="grid-people">' + buckets[k].map(personCardHtml).join('') + '</div>';
+        }).join('');
+      }
+
+      function renderPeople() {
+        var grid = document.getElementById('peopleGrid');
+        var countNote = document.getElementById('countNote');
+        var branchFilter = document.getElementById('filterBranch').value;
+        var yearFilter = document.getElementById('filterYear').value;
+
+        var filtered = attendees.filter(function (a) {
+          return (!branchFilter || a.branch === branchFilter) && (!yearFilter || a.year === yearFilter);
+        });
+
+        countNote.textContent = attendees.length === 0
+          ? ''
+          : filtered.length + ' of ' + attendees.length + ' alumni listed';
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div class="empty-state">' + (attendees.length === 0
+            ? 'No profiles yet \u2014 add yours below and it\'ll appear here once reviewed.'
+            : 'No one matches that filter yet.') + '</div>';
+        } else {
+          grid.innerHTML = renderGroupedCards(filtered);
+        }
+
+        var heroCount = document.getElementById('heroCount');
+        if (heroCount) {
+          heroCount.textContent = attendees.length > 0
+            ? (attendees.length === 1 ? '1 alum has added their profile so far' : attendees.length + ' alumni have added their profiles so far')
+            : '';
+        }
+      }
+
+      document.getElementById('filterBranch').addEventListener('change', renderPeople);
+      document.getElementById('filterYear').addEventListener('change', renderPeople);
+
+      // ---------- NAV ----------------------------------------------------------
+      var hamburgerBtn = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      hamburgerBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          mobileMenu.classList.remove('open');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      load();
+    })();
+  </script>
+
+</body>
+
+</html>
