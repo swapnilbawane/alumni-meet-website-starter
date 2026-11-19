@@ -1,0 +1,20 @@
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# Local secrets/configuration
+.env
+.env.*
+secrets/
+credentials.json
+client_secret*.json
+
+# Never commit real exports or attendee data
+*.csv
+*.xlsx
+*.xls
+*.ods
+exports/
+backups/
